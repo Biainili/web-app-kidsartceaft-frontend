@@ -14,6 +14,7 @@ code {
 
 header {
   padding-inline: 40px;
+  gap: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #007bff;
@@ -73,8 +74,10 @@ header a {
 
 .logout_conteiner {
   position: absolute;
-  top: 40%;
-  left: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -462,6 +465,7 @@ section {
   justify-content: space-around;
   flex-wrap: wrap;
   margin-bottom: 10px;
+  gap: 10px;
 }
 
 .gallery img {
@@ -521,4 +525,132 @@ ol {
 footer {
   margin-top: 50px;
   padding-inline: 40px;
+}
+
+.social_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.email {
+  font-size: 16px;
+}
+
+@media (max-width: 920px) {
+  .profile-container,
+  .order-container-profile,
+  .orders_container {
+    margin: 30px;
+    max-width: 330px;
+  }
+
+  .main-profile {
+    padding-inline: 5vw;
+  }
+
+  .profile-info p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 750px) {
+  .containerProfileOrder {
+    align-items: center;
+  }
+  .profile-container,
+  .order-container-profile,
+  .orders_container {
+    margin: 40px 20px;
+  }
+
+  .main-profile {
+    flex-direction: column;
+    align-items: center;
+    padding-inline: 5vw;
+  }
+}
+
+@media (max-width: 700px) {
+  header nav {
+    max-width: 320px;
+  }
+  .social-links a img {
+    width: 40px;
+  }
+}
+
+@media (max-width: 450px) {
+  .final-call {
+    font-size: 14px;
+  }
+  .email {
+    font-size: 14px;
+  }
+  footer {
+    padding-inline: 20px;
+  }
+
+  header {
+    justify-content: space-around;
+  }
+  .landing-container {
+    border-radius: unset;
+  }
+  .social-links a img {
+    width: 30px;
+  }
+  .logo_img {
+    width: 60px;
+  }
+
+  .logout_conteiner {
+    max-width: 250px;
+  }
+  header nav {
+    max-width: 250px;
+  }
+
+  .gallery img:nth-child(1) {
+    position: relative;
+    right: 15%;
+  }
+
+  .gallery img:nth-child(2) {
+    margin: 0 auto;
+  }
+
+  .gallery img:nth-child(3) {
+    position: relative;
+    left: 15%;
+  }
+
+  header a {
+    font-size: 14px;
+  }
+  header {
+    padding-inline: 15px;
+  }
+  .landing-container {
+    margin: 0px auto;
+  }
+  .gallery {
+    gap: 30px;
+  }
+
+  header {
+    margin-bottom: 0px;
+  }
+
+  header nav button {
+    font-size: 12px;
+    width: 60px;
+  }
+  header nav {
+    padding-inline: 10px;
+    gap: 10px;
+  }
+
+  .order-page {
+    padding: 20px !important;
+  }
 }

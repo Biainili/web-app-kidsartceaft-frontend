@@ -1,63 +1,75 @@
 .login_main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 20px;
 }
 
 h2 {
-    margin-bottom: 20px;
-    color: #333;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    background: white;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.2);
 }
 
 input {
-    width: 250px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+  width: 250px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
 .password-container {
-    display: flex;
-    align-items: center;
-    position: relative;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 .password-container input {
-    width: 100%;
-    padding-right: 40px;
+  width: 100%;
+  padding-right: 40px;
 }
 
 .eye-icon {
-    position: absolute;
-    right: 10px;
-    cursor: pointer;
-    font-size: 18px;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
 }
 
 button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
+}
+
+@media (max-width: 450px) {
+  form {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 350px) {
+  form {
+    padding: 20px;
+  }
 }

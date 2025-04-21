@@ -157,7 +157,9 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
             onChange={onChange}
           />
           <span>30 см.</span>
-          {user?.location === "Armenia" ? "12 800 AMD" : "6 000 RUB"}
+          <span>
+            {user?.location === "Armenia" ? "12 800 AMD" : "6 000 RUB"}
+          </span>
         </label>
         <label
           className={`product_radio ${
@@ -173,7 +175,9 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
             onChange={onChange}
           />
           <span>40 см.</span>
-          <span>{user?.location === "Armenia" ? "15 800 AMD" : "8 000 RUB"}</span>
+          <span>
+            {user?.location === "Armenia" ? "15 800 AMD" : "8 000 RUB"}
+          </span>
         </label>
         <label
           className={`product_radio ${
@@ -189,7 +193,9 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
             onChange={onChange}
           />
           <span className={""}>50 см.</span>
-          <span>{user?.location === "Armenia" ? "18 800 AMD" : "10 000 RUB"}</span>
+          <span>
+            {user?.location === "Armenia" ? "18 800 AMD" : "10 000 RUB"}
+          </span>
         </label>
       </div>
       <div className="order-row-conatiner-custom">
