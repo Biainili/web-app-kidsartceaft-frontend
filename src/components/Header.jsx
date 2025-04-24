@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import { useModal } from "../context/ModalContext";
 import { useUser } from "../context/UserContext";
 import "../index.css";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Logo from '../assets/img/kidsartcraft-login.png'
 
 
@@ -11,7 +11,7 @@ const Header = () => {
     const { isAuthenticated, logout } = useAuth();
     const { isLogoutModalOpen, setLogoutModalOpen } = useModal();
     const { user } = useUser();
-    const [currenUser, setCurrenUser] = useState(user);
+    // const [currenUser, setCurrenUser] = useState(user);
 
     const navigate = useNavigate(); // Получаем `navigate`
 
@@ -20,9 +20,9 @@ const Header = () => {
         logout(navigate);
     }
 
-    useEffect(() => {
-        setCurrenUser(user);
-    }, [user])
+    // useEffect(() => {
+    //     setCurrenUser(user);
+    // }, [user])
 
     return (
         <>
@@ -36,7 +36,7 @@ const Header = () => {
                         </>
                     ) : (
                         <>
-                            <Link to="/profile">{currenUser ? currenUser.username : 'Profile'}</Link>
+                            <Link to="/profile">{user ? user.username : 'Profile'}</Link>
                             <button className="logout_btn" onClick={() => setLogoutModalOpen(true)}>Logout</button>
                         </>
                     )}
