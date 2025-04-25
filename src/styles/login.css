@@ -103,6 +103,22 @@ button:hover {
   width: 250px;
 }
 
+#close_forgot {
+  position: absolute;
+  right: 8px;
+  top: 5px;
+  background: transparent;
+  color: rgb(109, 108, 108);
+  font-size: 24px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    transition: color 0.3s ease;
+}
+
+#close_forgot:hover {
+  color: black;
+}
+
 @media (max-width: 450px) {
   form {
     padding: 30px;

@@ -24,7 +24,7 @@
 
 
 .register-form input {
-    width: 95% !important;
+    width: 100%;
     padding: 14px 12px !important;
     margin-top: 5px;
     border: 1px solid #ccc;

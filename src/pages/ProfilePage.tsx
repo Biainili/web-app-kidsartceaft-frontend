@@ -130,7 +130,7 @@ export const ProfilePage: React.FC = () => {
       </div>
       <div className="containerProfileOrder">
         <div className="profile-container">
-          <h2 className="profile-title">Profile</h2>
+          <h2 className="profile-title">👤 Profile</h2>
 
           <div className="profile-info">
             <p>

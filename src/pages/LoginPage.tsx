@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useUser } from "../context/UserContext";
 import "../styles/login.css";
 
 export const LoginPage: React.FC = () => {
@@ -13,8 +14,10 @@ export const LoginPage: React.FC = () => {
 
   // Если пользователь уже авторизован, перенаправляем его в профиль
 
+  const {user} = useUser();
+
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticated && user) {
       navigate("/profile");
     }
   }, [isAuthenticated, navigate]);
@@ -107,6 +110,7 @@ export const LoginPage: React.FC = () => {
         </div>
         {showForgot && (
           <div className="forgot_container">
+            <button id="close_forgot" onClick={() => setShowForgot(false)}>x</button>
             <div className="for_email">
               <input
                 type="email"
