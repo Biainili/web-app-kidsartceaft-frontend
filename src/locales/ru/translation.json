@@ -1,0 +1,95 @@
+{
+  "login": "Войти",
+  "register": "Регистрация",
+  "logout": "Выйти",
+  "confirm_logout": "Вы действительно хотите выйти?",
+  "yes": "Да",
+  "no": "Нет",
+  "forgotPassword": "Забыли пароль",
+
+  "homeWelcome": "Добро пожаловать в KidsArtCraft",
+  "homeTagline": "Преобразите ваши рисунки в любимые игрушки!",
+  "homeDescription": "Оживите любимые картинки с помощью индивидуально сделанных игрушек от KidsArtCraft. Мы специализируемся на создании уникальных плюшевых игрушек, точно повторяющих ваши ценные рисунки или фотографии.",
+  "homeOrderNow": "Заказать",
+
+  "howItWorks": {
+    "title": "Как это работает:",
+    "stepOneTitle": "Загрузите изображение:",
+    "stepOneText": "Просто загрузите любимое фото или рисунок через наше удобное веб-приложение.",
+    "stepTwoTitle": "Выберите размер:",
+    "stepTwoText": "Выберите один из размеров — S (30 см), M (40 см) или L (50 см).",
+    "stepThreeTitle": "Мы создаём и доставляем:",
+    "stepThreeText": "Расслабьтесь! Наши мастера вручную изготовят вашу игрушку из экологичных материалов."
+  },
+
+  "examples": {
+    "creationsTitle": "Наши работы",
+    "vibeTitle": "Наша атмосфера"
+  },
+
+  "ecoTitle": "Экологично и безопасно",
+  "ecoText": "В KidsArtCraft мы заботимся об окружающей среде и ваших близких. Каждая игрушка изготовлена из высококачественных, экологичных материалов, обеспечивая уютного и безопасного друга как детям, так и взрослым.",
+
+  "loginPage": {
+    "emailPlaceholder": "Введите ваш e-mail",
+    "passwordPlaceholder": "Введите пароль",
+    "recover": {
+      "emailPlaceholder": "Пожалуйста, введите e-mail",
+      "button": "Восстановить пароль",
+      "info": "Вы получите 6-значный пароль на e-mail для входа, который сможете изменить в профиле.",
+      "newAccount": "новый аккаунт"
+    }
+  },
+
+  "registerPage": {
+    "usernameLabel": "Имя пользователя",
+    "usernamePlaceholder": "Имя",
+    "emailLabel": "E-mail",
+    "phoneLabel": "Телефон",
+    "phonePlaceholder": "+374ХХ ХХ ХХ ХХ",
+    "locationLabel": "Страна:",
+    "selectCountry": "Выберите страну",
+    "passwordLabel": "Пароль:",
+    "confirmPasswordLabel": "Подтвердите пароль:",
+    "confirmPasswordPlaceholder": "Повторите пароль",
+    "passwordMismatch": "Пароли не совпадают!",
+    "registrationSuccess": "Регистрация успешно завершена! Пожалуйста, войдите.",
+    "registrationError": "Ошибка регистрации. Проверьте данные и попробуйте снова."
+  },
+
+  "profilePage": {
+    "loading": "Загрузка…",
+    "userNotFound": "Пользователь не найден",
+    "orderTitle": "Превратите рисунок ребёнка в плюшевую игрушку!",
+    "orderDescription": "Мы воплощаем детское воображение! Загрузите рисунок, и мы создадим уникальную мягкую игрушку.",
+    "orderButton": "Создать игрушку",
+    "title": "Профиль",
+    "edit": "Редактировать профиль",
+    "cancel": "Отмена",
+    "saveChanges": "Сохранить изменения",
+    "currentPasswordLabel": "Текущий пароль",
+    "newPasswordLabel": "Новый пароль",
+    "confirmNewPasswordLabel": "Подтвердите новый пароль:",
+    "currentPasswordPlaceholder": "Введите текущий пароль",
+    "newPasswordPlaceholder": "Введите новый пароль",
+    "confirmNewPasswordPlaceholder": "Повторите новый пароль",
+    "notAuthorized": "Вы не авторизованы",
+    "updateSuccess": "Профиль успешно обновлён!",
+    "updateError": "Ошибка обновления профиля.",
+    "notmatch": "Новые пароли не совпадают!"
+  },
+
+  "myOrders": {
+    "loading": "Загрузка заказов…",
+    "notAuthorized": "Вы не авторизованы",
+    "tokenNotFound": "Токен не найден",
+    "fetchError": "Ошибка при получении заказов",
+    "genericError": "Ошибка загрузки заказов",
+    "title": "Мои заказы",
+    "noOrders": "У вас пока нет заказов.",
+    "idLabel": "ID заказа",
+    "orderDateLabel": "Дата заказа",
+    "deliveryDateLabel": "Дата доставки",
+    "statusLabel": "Статус"
+  }
+}

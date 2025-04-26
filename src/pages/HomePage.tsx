@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useUser } from "../context/UserContext";
+import { useTranslation } from "react-i18next";
 import HeroImg from "../assets/img/Hero-KidsArtCraft.png";
 import KidsVideo from "../assets/video/KidsArtCraft-video.mp4";
 import photo1 from "../assets/img/kidsartcraft-photo_1.png";
@@ -10,6 +11,7 @@ import "../index.css";
 
 const HomePage: React.FC = () => {
   const { user, fetchUserData } = useUser();
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchUserData();
@@ -17,67 +19,65 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="landing-container">
+      {/* ---------- HERO ---------- */}
       <div className="hero">
         <img src={HeroImg} alt="KidsArtCraft" className="hero-img" />
-        <h1>Welcome to KidsArtCraft</h1>
-        <p>Turn Your Pictures into Lovable Toys!</p>
+        <h1>{t("homeWelcome")}</h1>
+        <p>{t("homeTagline")}</p>
       </div>
 
+      {/* ---------- DESCRIPTION ---------- */}
       <section className="description">
-        <p>
-          Bring your favorite pictures to life with custom-made toys by
-          KidsArtCraft. We specialize in creating unique, personalized plush
-          toys designed exactly from your treasured drawings or photographs.
-        </p>
+        <p>{t("homeDescription")}</p>
+
         <div className="order-buttons">
           <Link to={user ? "/order" : "/login"} className="btn">
-            Order Now
+            {t("homeOrderNow")}
           </Link>
         </div>
       </section>
 
+      {/* ---------- HOW IT WORKS ---------- */}
       <section className="how-it-works">
-        <h2>How It Works:</h2>
+        <h2>{t("howItWorks.title")}</h2>
         <ol>
           <li>
-            <strong>Upload Your Image:</strong> Easily submit your favorite
-            photo or drawing through our intuitive web application.
+            <strong>{t("howItWorks.stepOneTitle")}</strong>{" "}
+            {t("howItWorks.stepOneText")}
           </li>
           <li>
-            <strong>Choose Your Size:</strong> Select from our available sizes –
-            <strong> S (30 cm), M (40 cm), or L (50 cm).</strong>
+            <strong>{t("howItWorks.stepTwoTitle")}</strong>{" "}
+            {t("howItWorks.stepTwoText")}
           </li>
           <li>
-            <strong>We Create & Deliver:</strong> Sit back and relax! Our
-            skilled artisans handcraft your toy using eco-friendly materials.
+            <strong>{t("howItWorks.stepThreeTitle")}</strong>{" "}
+            {t("howItWorks.stepThreeText")}
           </li>
         </ol>
       </section>
 
+      {/* ---------- EXAMPLES ---------- */}
       <section className="examples">
-        <h2>Our Creations</h2>
+        <h2>{t("examples.creationsTitle")}</h2>
         <div className="gallery">
           <img src={photo1} alt="Toy Example 1" />
           <img src={photo2} alt="Toy Example 2" />
           <img src={photo3} alt="Toy Example 3" />
         </div>
-        <h2>Our Vibe</h2>
+
+        <h2>{t("examples.vibeTitle")}</h2>
         <div className="video-demo">
           <video controls>
             <source src={KidsVideo} type="video/mp4" />
-            Your browser does not support the video tag.
+            {t("videoNotSupported", { defaultValue: "Your browser does not support the video tag." })}
           </video>
         </div>
       </section>
 
+      {/* ---------- ECO ---------- */}
       <section className="eco-friendly">
-        <h2>Eco-Friendly & Safe</h2>
-        <p>
-          At KidsArtCraft, we care deeply about the environment and your loved
-          ones. Each toy is carefully crafted from high-quality, eco-friendly
-          materials ensuring a safe, cuddly companion for children and adults
-          alike.
-        </p>
+        <h2>{t("ecoTitle")}</h2>
+        <p>{t("ecoText")}</p>
       </section>
     </div>
   );

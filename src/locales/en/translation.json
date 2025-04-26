@@ -1,0 +1,100 @@
+{
+  "login": "Login",
+  "register": "Register",
+  "logout": "Logout",
+  "confirm_logout": "Do you want to logout?",
+  "yes": "Yes",
+  "no": "No",
+  "forgotPassword": "Forgot password",
+
+  "homeWelcome": "Welcome to KidsArtCraft",
+  "homeTagline": "Turn Your Pictures into Lovable Toys!",
+  "homeDescription": "Bring your favorite pictures to life with custom-made toys by KidsArtCraft. We specialize in creating unique, personalized plush toys designed exactly from your treasured drawings or photographs.",
+  "homeOrderNow": "Order Now",
+
+  "howItWorks": {
+    "title": "How It Works:",
+    "stepOneTitle": "Upload Your Image:",
+    "stepOneText": "Easily submit your favorite photo or drawing through our intuitive web application.",
+    "stepTwoTitle": "Choose Your Size:",
+    "stepTwoText": "Select from our available sizes – S (30 cm), M (40 cm) or L (50 cm).",
+    "stepThreeTitle": "We Create & Deliver:",
+    "stepThreeText": "Sit back and relax! Our skilled artisans hand-craft your toy using eco-friendly materials."
+  },
+
+  "examples": {
+    "creationsTitle": "Our Creations",
+    "vibeTitle": "Our Vibe"
+  },
+
+  "ecoTitle": "Eco-Friendly & Safe",
+  "ecoText": "At KidsArtCraft, we care deeply about the environment and your loved ones. Each toy is carefully crafted from high-quality, eco-friendly materials, ensuring a safe, cuddly companion for children and adults alike.",
+  "loginPage": {
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Enter your password",
+
+    "recover": {
+      "emailPlaceholder": "Please enter email",
+      "button": "Recover password",
+      "info": "You will receive a 6-digit password to your email to log into your account, which you can change in your account profile.",
+      "newAccount": "new account"
+    }
+  },
+  "registerPage": {
+    "usernameLabel": "User Name",
+    "usernamePlaceholder": "Username",
+    "emailLabel": "E-Mail",
+    "phoneLabel": "Phone Number",
+    "phonePlaceholder": "+374XX XX XX XX",
+    "locationLabel": "Location:",
+    "selectCountry": "Select country",
+    "passwordLabel": "Password:",
+    "confirmPasswordLabel": "Confirm Password:",
+    "confirmPasswordPlaceholder": "Confirm Password",
+
+    "passwordMismatch": "Passwords do not match!",
+    "registrationSuccess": "Registration successful! Please log in.",
+    "registrationError": "Registration error. Check your data and try again."
+  },
+  "profilePage": {
+    "loading": "Loading...",
+    "userNotFound": "User not found",
+
+    "orderTitle": "Turn Your Child's Drawing into a Plush Toy!",
+    "orderDescription": "We bring children's imagination to life! Upload a drawing, and we'll craft a one-of-a-kind plush toy.",
+    "orderButton": "Create Your Toy",
+
+    "title": "Profile",
+    "edit": "Edit Profile",
+    "cancel": "Cancel",
+    "saveChanges": "Save Changes",
+
+    "currentPasswordLabel": "Current Password",
+    "newPasswordLabel": "New Password",
+    "confirmNewPasswordLabel": "Confirm New Password:",
+
+    "currentPasswordPlaceholder": "Enter current password",
+    "newPasswordPlaceholder": "Enter new password",
+    "confirmNewPasswordPlaceholder": "Confirm new password",
+
+    "notAuthorized": "You are not authorized",
+    "updateSuccess": "Profile updated successfully!",
+    "updateError": "Error updating profile.",
+    "notmatch": "New passwords do not match!"
+  },
+  "myOrders": {
+    "loading": "Loading orders…",
+    "notAuthorized": "You are not authorized",
+    "tokenNotFound": "Token not found",
+    "fetchError": "Error fetching orders",
+    "genericError": "Error loading orders",
+
+    "title": "My Orders",
+    "noOrders": "You have no orders yet.",
+
+    "idLabel": "Order ID",
+    "orderDateLabel": "Order Date:",
+    "deliveryDateLabel": "Delivery Date:",
+    "statusLabel": "Status:"
+  }
+}

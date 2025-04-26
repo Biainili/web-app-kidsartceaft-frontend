@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useUser } from "../context/UserContext";
 import "../styles/login.css";
+import { useTranslation } from "react-i18next";
 
 export const LoginPage: React.FC = () => {
   const { login, isAuthenticated } = useAuth();
@@ -11,10 +12,11 @@ export const LoginPage: React.FC = () => {
   const [recoverEmail, setRecoverEmail] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showForgot, setShowForgot] = useState(false);
+  const { t } = useTranslation();
 
   // Если пользователь уже авторизован, перенаправляем его в профиль
 
-  const {user} = useUser();
+  const { user } = useUser();
 
   useEffect(() => {
     if (isAuthenticated && user) {
@@ -74,23 +76,23 @@ export const LoginPage: React.FC = () => {
 
   return (
     <div className="login_main">
-      <h2>Login</h2>
+      <h2>{t("login")}</h2>
       <form onSubmit={handleLogin}>
         <input
           type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
-          placeholder="Enter your email"
+          placeholder={t("loginPage.emailPlaceholder")}
           required
         />
         <div className="password-container">
           <input
-            type={showPassword ? "text" : "password"} // Переключаем тип поля
+            type={showPassword ? "text" : "password"}
             name="password"
             value={formData.password}
             onChange={handleChange}
-            placeholder="Enter your password"
+            placeholder={t("loginPage.passwordPlaceholder")}
             required
           />
           <span
@@ -101,32 +103,31 @@ export const LoginPage: React.FC = () => {
           </span>
         </div>
 
-        <button type="submit">Login</button>
+        <button type="submit">{t("login")}</button>
         <div className="container_forgot_register">
-          <Link to={"/register"}>register a new account </Link>
+          <Link to={"/register"}>{t("loginPage.recover.newAccount")}</Link>
           <button id="forgot_pass" onClick={() => setShowForgot(true)}>
-            forgot password
+            {t("forgotPassword")}
           </button>
         </div>
         {showForgot && (
           <div className="forgot_container">
-            <button id="close_forgot" onClick={() => setShowForgot(false)}>x</button>
+            <button id="close_forgot" onClick={() => setShowForgot(false)}>
+              x
+            </button>
             <div className="for_email">
               <input
                 type="email"
                 name="recoverEmail"
                 value={recoverEmail}
                 onChange={(e) => setRecoverEmail(e.target.value)}
-                placeholder="Please enter email"
+                placeholder={t("loginPage.recover.emailPlaceholder")}
                 required
               />
               <button type="button" onClick={handleRecoverPassword}>
-                Recover password
+                {t("loginPage.recover.button")}
               </button>
-              <p>
-                You will receive a 6-digit password to your email to log into
-                your account, which you can change in your account profile.
-              </p>
+              <p>{t("loginPage.recover.info")}</p>
             </div>
           </div>
         )}

@@ -3,11 +3,13 @@ import { useUser } from "../context/UserContext";
 import OrderImg from "../assets/img/order-img.png";
 import { Link } from "react-router-dom";
 import { MyOrders } from "../components/order-commponents/MyOrders";
+import { useTranslation } from "react-i18next";
 
 export const ProfilePage: React.FC = () => {
   const { user, loading, fetchUserData } = useUser();
   const [isEditing, setIsEditing] = useState(false);
   const isFirstRender = useRef(true);
+  const { t } = useTranslation();
 
   const [formData, setFormData] = useState({
     username: user?.username || "",
@@ -56,14 +58,14 @@ export const ProfilePage: React.FC = () => {
       formData.newPassword &&
       formData.newPassword !== formData.confirmPassword
     ) {
-      alert("New passwords do not match!");
+      alert(t("profilePage.notmatch"));
       return;
     }
 
     try {
       const token = localStorage.getItem("token");
       if (!token) {
-        alert("You are not authorized");
+        alert(t("profilePage.notAuthorized"));
         return;
       }
 
@@ -92,23 +94,21 @@ export const ProfilePage: React.FC = () => {
         throw new Error(data.message || "Something went wrong");
       }
 
-      alert("Profile updated successfully!");
+      alert(t("profilePage.updateSuccess"));
       setIsEditing(false);
       fetchUserData(); // Update user data in context
     } catch (error: any) {
-      alert(`Error updating profile: ${error.message}`);
+      alert(`${t("profilePage.updateError")} ${error.message}`);
     }
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (!user) return <div>User not found</div>;
+  if (loading) return <div>{t("profilePage.loading")}</div>;
+  if (!user) return <div>{t("profilePage.userNotFound")}</div>;
 
   return (
     <div className="main-profile">
       <div className="order-container-profile">
-        <h2 className="order-title">
-          Turn Your Child's Drawing into a Plush Toy!
-        </h2>
+        <h2 className="order-title">{t("profilePage.orderTitle")}</h2>
 
         <div className="order-card">
           {/* Фото детского рисунка */}
@@ -117,44 +117,45 @@ export const ProfilePage: React.FC = () => {
           {/* Описание */}
           <div className="order-details">
             <p className="order-description">
-              We bring children's imagination to life! Upload a drawing, and
-              we'll craft a one-of-a-kind plush toy.
+              {t("profilePage.orderDescription")}
             </p>
 
             {/* Кнопка перехода на страницу заказа */}
             <Link to="/order" className="order-button">
-              Create Your Toy
+              {t("profilePage.orderButton")}
             </Link>
           </div>
         </div>
       </div>
       <div className="containerProfileOrder">
         <div className="profile-container">
-          <h2 className="profile-title">👤 Profile</h2>
+          <h2 className="profile-title">👤 {t("profilePage.title")}</h2>
 
           <div className="profile-info">
             <p>
-              <strong>Username:</strong> {user.username}
+              <strong>{t("registerPage.usernameLabel")}:</strong>{" "}
+              {user.username}
             </p>
             <p>
-              <strong>Email:</strong> {user.email}
+              <strong>{t("registerPage.emailLabel")}:</strong> {user.email}
             </p>
             <p>
-              <strong>Phone Number:</strong> {user.phone}
+              <strong>{t("registerPage.phoneLabel")}:</strong> {user.phone}
             </p>
             <p>
-              <strong>Location:</strong> {user.location}
+              <strong>{t("registerPage.locationLabel")}:</strong>{" "}
+              {user.location}
             </p>
           </div>
 
           <button className="edit-btn" onClick={() => setIsEditing(!isEditing)}>
-            {isEditing ? "Cancel" : "Edit Profile"}
+            {isEditing ? t("profilePage.cancel") : t("profilePage.edit")}
           </button>
 
           {isEditing && (
             <div className="edit-container">
               <label>
-                Username:
+                {t("registerPage.usernameLabel")}:
                 <input
                   type="text"
                   name="username"
@@ -164,7 +165,7 @@ export const ProfilePage: React.FC = () => {
               </label>
 
               <label>
-                Phone Number:
+                {t("registerPage.phoneLabel")}:
                 <input
                   type="text"
                   name="phone"
@@ -173,7 +174,7 @@ export const ProfilePage: React.FC = () => {
                 />
               </label>
               <label>
-                Location:
+                {t("registerPage.locationLabel")}:
                 <input
                   type="text"
                   name="location"
@@ -183,14 +184,14 @@ export const ProfilePage: React.FC = () => {
               </label>
 
               <label>
-                Current Password:
+                {t("profilePage.currentPasswordLabel")}:
                 <div className="password-container">
                   <input
                     type={showPasswords.currentPassword ? "text" : "password"}
                     name="currentPassword"
                     value={formData.currentPassword}
                     onChange={handleChange}
-                    placeholder="Enter current password"
+                    placeholder={t("profilePage.currentPasswordLabel")}
                   />
                   <span
                     onClick={() => togglePasswordVisibility("currentPassword")}
@@ -202,14 +203,14 @@ export const ProfilePage: React.FC = () => {
               </label>
 
               <label>
-                New Password:
+                {t("profilePage.newPasswordLabel")}:
                 <div className="password-container">
                   <input
                     type={showPasswords.newPassword ? "text" : "password"}
                     name="newPassword"
                     value={formData.newPassword}
                     onChange={handleChange}
-                    placeholder="Enter new password"
+                    placeholder={t("profilePage.newPasswordLabel")}
                   />
                   <span
                     onClick={() => togglePasswordVisibility("newPassword")}
@@ -221,14 +222,14 @@ export const ProfilePage: React.FC = () => {
               </label>
 
               <label>
-                Confirm New Password:
+                {t("profilePage.confirmNewPasswordLabel")}:
                 <div className="password-container">
                   <input
                     type={showPasswords.confirmPassword ? "text" : "password"}
                     name="confirmPassword"
                     value={formData.confirmPassword}
                     onChange={handleChange}
-                    placeholder="Confirm new password"
+                    placeholder={t("profilePage.confirmNewPasswordLabel")}
                   />
                   <span
                     onClick={() => togglePasswordVisibility("confirmPassword")}
@@ -240,7 +241,7 @@ export const ProfilePage: React.FC = () => {
               </label>
 
               <button className="save-btn" onClick={handleSave}>
-                Save Changes
+                {t("profilePage.saveChanges")}
               </button>
             </div>
           )}

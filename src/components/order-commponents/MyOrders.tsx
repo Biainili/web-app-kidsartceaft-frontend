@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 interface Order {
   order_id: string;
@@ -14,18 +15,20 @@ export const MyOrders: React.FC<{ userId: string | null }> = ({ userId }) => {
   const [orders, setOrders] = useState<Order[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const { t } = useTranslation();
+  
 
   useEffect(() => {
     const fetchOrders = async () => {
       if (!isAuthenticated) {
-        setError("Вы не авторизованы");
+        setError(t("myOrders.notAuthorized")); 
         setLoading(false);
         return;
       }
 
       const token = localStorage.getItem("token");
       if (!token) {
-        setError("Токен не найден");
+        setError(t("myOrders.tokenNotFound"));
         setLoading(false);
         return;
       }
@@ -40,13 +43,13 @@ export const MyOrders: React.FC<{ userId: string | null }> = ({ userId }) => {
         });
 
         if (!response.ok) {
-          throw new Error("Ошибка при получении заказов");
+          throw new Error("Error receiving orders");
         }
 
         const data = await response.json();
         setOrders(data);
       } catch (err: any) {
-        setError(err.message || "Ошибка загрузки заказов");
+        setError(err.message || t("myOrders.genericError"));
       } finally {
         setLoading(false);
       }
@@ -55,29 +58,29 @@ export const MyOrders: React.FC<{ userId: string | null }> = ({ userId }) => {
     fetchOrders();
   }, [isAuthenticated]);
 
-  if (loading) return <p>⏳ Загрузка заказов...</p>;
+  if (loading) return <p>⏳ {t("myOrders.loading")}</p>;
   if (error) return <p className="error">❌ {error}</p>;
 
   return (
     <div className="orders_container">
-      <h2>📦 My orders</h2>
+      <h2>📦 {t("myOrders.title")}</h2>
       {!orders || orders.length === 0 ? (
-        <p>You have no orders yet.</p>
+        <p>{t("myOrders.noOrders")}</p>
       ) : (
         <ul className="order-list">
           {orders.map((order) => (
             <li key={order.order_id} className="order-item">
               <p>
-                🆔 <strong>ID заказа:</strong> <span>{order.order_id}</span> 
+                🆔 <strong>{t("myOrders.idLabel")}:</strong> <span>{order.order_id}</span> 
               </p>
               <p>
-                📅 <strong>Дата заказа:</strong> {order.order_date}
+                📅 <strong>{t("myOrders.orderDateLabel")}:</strong> {order.order_date}
               </p>
               <p>
-                🚚 <strong>Дата доставки:</strong> {order.delivery_date}
+                🚚 <strong>{t("myOrders.deliveryDateLabel")}:</strong> {order.delivery_date}
               </p>
               <p>
-                ✅ <strong>Статус:</strong> {order.status}
+                ✅ <strong>{t("myOrders.statusLabel")}:</strong> {order.status}
               </p>
             </li>
           ))}
