@@ -91,5 +91,49 @@
     "orderDateLabel": "Պատվերի ամսաթիվ․",
     "deliveryDateLabel": "Առաքման ամսաթիվ․",
     "statusLabel": "Կարգավիճակ"
+  },
+  "userInfo": {
+    "title": "Ձեր տվյալները",
+    "usernameLabel": "Օգտվողի անուն",
+    "emailLabel": "Էլ․ փոստ",
+    "phoneLabel": "Հեռախոս",
+    "locationLabel": "Երկիր",
+    "infoLabel": "Տեղեկություն",
+    "infoText": "Խնդրում ենք հաստատել պրոֆիլի տվյալները, լրացնել ձևը (քաղաք, հասցե և այլն) և վերբեռնել ձեր նկարը։ Այնուհետեւ հաստատեք և վճարեք պատվերը։ Ձեր պատվերը կկատարվի և կառաքվի {{days}} օրում",
+    "editProfileButton": "Խմբագրել պրոֆիլը",
+    "continueButton": "Շարունակել պատվերին"
+  },
+  "orderDetails": {
+    "cityLabel": "Քաղաք",
+    "cityLabelPlaceholder": "Քաղաք",
+    "addressLabel": "Հասցե",
+    "addressLabelPlaceholder": "Փողոց, տուն, բնակարան",
+    "errorCityRequired": "«Քաղաք» դաշտը պարտադիր է",
+    "errorAddressRequired": "«Հասցե» դաշտը պարտադիր է",
+    "sizeTitle": "Ընտրեք չափը",
+    "sm": "սմ",
+    "promoCodeLabel": "Ակցիայի կոդ",
+    "promoCodePlaceholder": "Մուտքագրեք կոդ (ըստ ցանկության)",
+    "commentLabel": "Մեկնաբանություն",
+    "commentPlaceholder": "Եթե ունեք մեկնաբանություններ",
+    "addPhoto": "Ավելացնել լուսանկար խաղալիքի համար",
+    "backButton": "Հետ",
+    "continueButton": "Շարունակել"
+  },
+  "currency": {
+    "amd": "Դր․",
+    "rub": "Ռուբ․"
+  },
+  "orderConfirmation": {
+    "title": "Պատվերի ամփոփագիր",
+    "totalPriceLabel": "Ընդհանուր գին",
+    "termsText": "Հաստատելով՝ դուք համաձայնում եք մեր պայմաններին և կանոններին։",
+    "backButton": "Հետ",
+    "confirmButton": "Հաստատել և վճարել"
+  },
+  "footer": {
+    "title": "Կապվեք մեզ հետ!",
+    "subtitle": "Հետևեք մեր ստեղծագործություններին և ներշնչվեք",
+    "callout": "Դարձրե՛ք հիշողությունները շոշափելի։ Փոխակերպեք ձեր նկարները հիասքանչ փափուկ խաղալիքների հենց այսօր KidsArtCraft-ի հետ!"
   }
 }

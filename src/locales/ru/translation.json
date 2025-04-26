@@ -91,5 +91,49 @@
     "orderDateLabel": "Дата заказа",
     "deliveryDateLabel": "Дата доставки",
     "statusLabel": "Статус"
+  },
+  "userInfo": {
+    "title": "Ваша информация",
+    "usernameLabel": "Имя пользователя",
+    "emailLabel": "E-mail",
+    "phoneLabel": "Телефон",
+    "locationLabel": "Страна",
+    "infoLabel": "Информация",
+    "infoText": "Пожалуйста, проверьте данные профиля, заполните форму (город, адрес и т.д.) и загрузите рисунок. Затем подтвердите и оплатите заказ. Ваш заказ будет выполнен и доставлен в течение {{days}} дныей.",
+    "editProfileButton": "Редактировать профиль",
+    "continueButton": "Перейти к заказу"
+  },
+  "orderDetails": {
+    "cityLabel": "Город",
+    "cityLabelPlaceholder": "Город",
+    "addressLabel": "Адрес",
+    "addressLabelPlaceholder": "Улица, дом, квартира",
+    "errorCityRequired": "Поле «Город» обязательно",
+    "errorAddressRequired": "Поле «Адрес» обязательно",
+    "sizeTitle": "Выберите размер",
+    "sm": "см",
+    "promoCodeLabel": "Промокод",
+    "promoCodePlaceholder": "Введите промокод (необязательно)",
+    "commentLabel": "Комментарий",
+    "commentPlaceholder": "Если у вас есть комментарии",
+    "addPhoto": "Добавить фото для игрушки",
+    "backButton": "Назад",
+    "continueButton": "Продолжить"
+  },
+  "currency": {
+    "amd": "Др.",
+    "rub": "Руб."
+  },
+  "orderConfirmation": {
+    "title": "Сводка заказа",
+    "totalPriceLabel": "Итоговая стоимость",
+    "termsText": "Подтверждая, вы соглашаетесь с нашими условиями и правилами.",
+    "backButton": "Назад",
+    "confirmButton": "Подтвердить и оплатить"
+  },
+  "footer": {
+    "title": "Свяжитесь с нами!",
+    "subtitle": "Следите за нашими творениями и вдохновляйтесь",
+    "callout": "Сделайте воспоминания осязаемыми. Превратите свои рисунки в удивительные плюшевые игрушки уже сегодня с KidsArtCraft!"
   }
 }

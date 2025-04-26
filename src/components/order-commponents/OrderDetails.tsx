@@ -2,6 +2,7 @@ import "../../styles/order.css";
 import fileUpload from "../../assets/img/file-upload.webp";
 import { useUser } from "../../context/UserContext";
 import { useEffect, useCallback, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface OrderDetailsProps {
   formData: {
@@ -94,10 +95,10 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
     const newErrors: { city?: string; address?: string } = {};
 
     if (!formData.city.trim()) {
-      newErrors.city = "City is required";
+      newErrors.city = t("orderDetails.errorCityRequired");
     }
     if (!formData.address.trim()) {
-      newErrors.address = "Address is required";
+      newErrors.address = t("orderDetails.errorAddressRequired");
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -108,14 +109,20 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
     setErrors({});
     onNext();
   };
+  const { t } = useTranslation();
 
+  const sPrice = user?.location === "Armenia" ? "12 800 " : "6000";
+  const mPrice = user?.location === "Armenia" ? "15 800" : "8000";
+  const lPrice = user?.location === "Armenia" ? "18 800" : "10 000";
+  const currencyKey =
+    user?.location === "Armenia" ? "currency.amd" : "currency.rub";
   return (
     <div className="order-details">
       {/* <span>{formData.price}</span> */}
 
       <div className="order-row-conatiner-custom">
         <label>
-          City: *
+          {t("orderDetails.cityLabel")}: *
           <input
             type="text"
             name="city"
@@ -123,11 +130,12 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
             onChange={onChange}
             required
             className={formData.city ? "disabled-input" : ""}
+            placeholder={t("orderDetails.cityLabelPlaceholder")}
           />
           {errors.city && <span className="error-message">{errors.city}</span>}
         </label>
         <label>
-          Address: *
+          {t("orderDetails.addressLabel")}: *
           <input
             type="text"
             name="address"
@@ -135,20 +143,23 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
             onChange={onChange}
             required
             className={formData.address ? "disabled-input" : ""}
+            placeholder={t("orderDetails.addressLabelPlaceholder")}
           />
           {errors.address && (
             <span className="error-message">{errors.address}</span>
           )}
         </label>
       </div>
-      <span className="size-selection-taitel">Select Size: *</span>
+      <span className="size-selection-taitel">
+        {t("orderDetails.sizeTitle")}: *
+      </span>
       <div className="size-selection">
         <label
           className={`product_radio ${
             formData.size === "S" ? "active_radio" : ""
           }`}
         >
-          <span>Small</span>
+          <span>S</span>
           <input
             type="radio"
             name="size"
@@ -156,9 +167,9 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
             checked={formData.size === "S"}
             onChange={onChange}
           />
-          <span>30 см.</span>
+          <span>30 {t("orderDetails.sm")}</span>
           <span>
-            {user?.location === "Armenia" ? "12 800 AMD" : "6 000 RUB"}
+            {sPrice} {t(currencyKey)}
           </span>
         </label>
         <label
@@ -166,7 +177,7 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
             formData.size === "M" ? "active_radio" : ""
           }`}
         >
-          <span>Medium</span>
+          <span>M</span>
           <input
             type="radio"
             name="size"
@@ -174,9 +185,9 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
             checked={formData.size === "M"}
             onChange={onChange}
           />
-          <span>40 см.</span>
+          <span>40 {t("orderDetails.sm")}</span>
           <span>
-            {user?.location === "Armenia" ? "15 800 AMD" : "8 000 RUB"}
+            {mPrice} {t(currencyKey)}
           </span>
         </label>
         <label
@@ -184,7 +195,7 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
             formData.size === "L" ? "active_radio" : ""
           }`}
         >
-          <span>Large</span>
+          <span>L</span>
           <input
             type="radio"
             name="size"
@@ -192,39 +203,39 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
             checked={formData.size === "L"}
             onChange={onChange}
           />
-          <span className={""}>50 см.</span>
+          <span className={""}>50 {t("orderDetails.sm")}</span>
           <span>
-            {user?.location === "Armenia" ? "18 800 AMD" : "10 000 RUB"}
+            {lPrice} {t(currencyKey)}
           </span>
         </label>
       </div>
       <div className="order-row-conatiner-custom">
         <label>
-          Promo Code:
+          {t("orderDetails.promoCodeLabel")}:
           <input
             type="text"
             name="promoCode"
             value={formData.promoCode}
             onChange={onChange}
-            placeholder="Enter promo code (optional)"
+            placeholder={t("orderDetails.promoCodePlaceholder")}
             className={formData.promoCode ? "disabled-input" : ""}
           />
         </label>
         <label>
-          Comment:
+          {t("orderDetails.commentLabel")}:
           <input
             type="text"
             name="comment"
             value={formData.comment}
             onChange={onChange}
-            placeholder="If you have any comments"
+            placeholder={t("orderDetails.commentPlaceholder")}
             className={formData.comment ? "disabled-input" : ""}
           />
         </label>
       </div>
 
       <div className="upload-container">
-        <span>Add Phto for toy: *</span>
+        <span>{t("orderDetails.addPhoto")}: *</span>
         <label className="upload-label">
           <input
             type="file"
@@ -248,8 +259,8 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
       </div>
 
       <div className="buttons-container">
-        <button onClick={onBack}>Back</button>
-        <button onClick={handleNext}>Continue</button>
+        <button onClick={onBack}>{t("orderDetails.backButton")}</button>
+        <button onClick={handleNext}>{t("orderDetails.continueButton")}</button>
       </div>
     </div>
   );

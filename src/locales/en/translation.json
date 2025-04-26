@@ -96,5 +96,49 @@
     "orderDateLabel": "Order Date:",
     "deliveryDateLabel": "Delivery Date:",
     "statusLabel": "Status:"
+  },
+  "userInfo": {
+    "title": "Your Information",
+    "usernameLabel": "Username",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "locationLabel": "Location",
+    "infoLabel": "Information",
+    "infoText": "Please confirm your profile details, fill out the form (city, address, etc.), and upload your drawing. Then confirm and pay for your order. Your order will be completed and delivered within {{days}} days.",
+    "editProfileButton": "Edit Profile",
+    "continueButton": "Continue to Order"
+  },
+  "orderDetails": {
+    "cityLabel": "City",
+    "cityLabelPlaceholder": "City",
+    "addressLabel": "Address",
+    "addressLabelPlaceholder": "Street, Building, Apartment",
+    "errorCityRequired": "City is required",
+    "errorAddressRequired": "Address is required",
+    "sizeTitle": "Select Size",
+    "sm": "sm",
+    "promoCodeLabel": "Promo Code",
+    "promoCodePlaceholder": "Enter promo code (optional)",
+    "commentLabel": "Comment",
+    "commentPlaceholder": "If you have any comments",
+    "addPhoto": "Add Photo for toy",
+    "backButton": "Back",
+    "continueButton": "Continue"
+  },
+  "currency": {
+    "amd": "AMD",
+    "rub": "RUB"
+  },
+  "orderConfirmation": {
+    "title": "Order Summary",
+    "totalPriceLabel": "Total Price",
+    "termsText": "By confirming, you agree to our terms and conditions.",
+    "backButton": "Back",
+    "confirmButton": "Confirm and Pay"
+  },
+  "footer": {
+    "title": "Connect with Us!",
+    "subtitle": "Follow our creations and stay inspired",
+    "callout": "Make memories tangible. Transform your pictures into delightful plush toys today with KidsArtCraft!"
   }
 }

@@ -13,7 +13,7 @@ export const OrderPage: React.FC = () => {
     address: "",
     comment: "",
     size: "M",
-    price: user?.location === "Russia" ? 8000 : 1280,
+    price: user?.location === "Russia" ? 8000 : 12800,
     promoCode: "",
     orderImg: null as File | null,
   });

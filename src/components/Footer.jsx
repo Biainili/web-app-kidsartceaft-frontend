@@ -1,12 +1,14 @@
 import "../index.css";
 import iconInstagram from "../assets/icons/instagram.png";
 import iconTelegram from "../assets/icons/telegram.png";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer>
-      <h2>Connect with Us!</h2>
-      <p>Follow our creations and stay inspired:</p>
+      <h2>{t("footer.title")}</h2>
+      <p>{t("footer.subtitle")}:</p>
       <div className="social_container">
         <div className="social-links">
           <a href="https://www.instagram.com/kidsartcraft.am/" target="_blank">
@@ -20,10 +22,7 @@ const Footer = () => {
           <p>support@kidsartcraft.ai</p>
         </div>
       </div>
-      <p className="final-call">
-        Make memories tangible. Transform your pictures into delightful plush
-        toys today with KidsArtCraft!
-      </p>
+      <p className="final-call">{t("footer.callout")}</p>
     </footer>
   );
 };

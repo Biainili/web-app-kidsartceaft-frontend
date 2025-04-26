@@ -128,12 +128,13 @@ input:disabled,
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .upload-container span {
   text-align: start;
   font-weight: bold;
   margin-top: 10px;
+  margin-bottom: 5px;
   font-size: 14px;
   align-self: self-start;
 }
@@ -148,8 +149,8 @@ input:disabled,
 }
 
 .upload-container .upload-preview {
-  width: 175px;
-  height: 195px;
+  width: 165px;
+  height: 185px;
   border-radius: 16px;
   background-color: #f5f5f5;
   background-position: center;
@@ -179,6 +180,7 @@ input:disabled,
   display: block;
   margin-bottom: 5px;
   text-align: start;
+  margin-top: 5px;
 }
 
 .size-selection label {
@@ -187,6 +189,7 @@ input:disabled,
   gap: 5px;
   font-size: 14px;
   font-weight: normal;
+  margin-top: unset;
 }
 
 input[type="radio"] {

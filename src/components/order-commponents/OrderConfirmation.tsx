@@ -1,21 +1,36 @@
 import "../../styles/order.css";
+import { useTranslation } from "react-i18next";
+import { useUser } from "../../context/UserContext";
+
 interface OrderConfirmationProps {
-    price: number;
-    onConfirm: () => void;
-    onBack: () => void;
+  price: number;
+  onConfirm: () => void;
+  onBack: () => void;
 }
 
-
-export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({ price, onConfirm, onBack }) => {
-    return (
-        <div className="order-confirmation">
-            <h3>Order Summary</h3>
-            <p><strong>Total Price:</strong> {price} руб.</p>
-            <p>By confirming, you agree to our terms and conditions.</p>
-            <div className="buttons-container">
-                <button onClick={onBack}>Back</button>
-                <button onClick={onConfirm}>Confirm and Pay</button>
-            </div>
-        </div>
-    )
-}
+export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
+  price,
+  onConfirm,
+  onBack,
+}) => {
+  const { t } = useTranslation();
+  const { user } = useUser();
+  const currencyKey =
+    user?.location === "Armenia" ? "currency.amd" : "currency.rub";
+  return (
+    <div className="order-confirmation">
+      <h3>{t("orderConfirmation.title")}</h3>
+      <p>
+        <strong>{t("orderConfirmation.totalPriceLabel")}:</strong> {price}{" "}
+        {t(currencyKey)}.
+      </p>
+      <p>{t("orderConfirmation.termsText")}</p>
+      <div className="buttons-container">
+        <button onClick={onBack}>{t("orderConfirmation.backButton")}</button>
+        <button onClick={onConfirm}>
+          {t("orderConfirmation.confirmButton")}
+        </button>
+      </div>
+    </div>
+  );
+};
