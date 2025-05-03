@@ -13,6 +13,7 @@ interface OrderDetailsProps {
     price: number;
     promoCode: string;
     orderImg: File | null;
+    productType: string;
   };
   setFormData: React.Dispatch<
     React.SetStateAction<OrderDetailsProps["formData"]>
@@ -52,32 +53,64 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
     let basePrice = 0;
 
     if (user?.location === "Armenia") {
-      switch (formData.size) {
-        case "S":
-          basePrice = 12800;
-          break;
-        case "M":
-          basePrice = 15800;
-          break;
-        case "L":
-          basePrice = 18800;
-          break;
-        default:
-          basePrice = 15800;
+      if (formData.productType === "toy") {
+        switch (formData.size) {
+          case "S":
+            basePrice = 12800;
+            break;
+          case "M":
+            basePrice = 15800;
+            break;
+          case "L":
+            basePrice = 18800;
+            break;
+          default:
+            basePrice = 15800;
+        }
+      } else {
+        switch (formData.size) {
+          case "S":
+            basePrice = 26000;
+            break;
+          case "M":
+            basePrice = 30000;
+            break;
+          case "L":
+            basePrice = 34000;
+            break;
+          default:
+            basePrice = 30000;
+        }
       }
     } else if (user?.location === "Russia") {
-      switch (formData.size) {
-        case "S":
-          basePrice = 6000;
-          break;
-        case "M":
-          basePrice = 8000;
-          break;
-        case "L":
-          basePrice = 10000;
-          break;
-        default:
-          basePrice = 8000;
+      if (formData.productType === "toy") {
+        switch (formData.size) {
+          case "S":
+            basePrice = 6000;
+            break;
+          case "M":
+            basePrice = 8000;
+            break;
+          case "L":
+            basePrice = 10000;
+            break;
+          default:
+            basePrice = 8000;
+        }
+      } else {
+        switch (formData.size) {
+          case "S":
+            basePrice = 10000;
+            break;
+          case "M":
+            basePrice = 12000;
+            break;
+          case "L":
+            basePrice = 14000;
+            break;
+          default:
+            basePrice = 12000;
+        }
       }
     }
 
@@ -89,7 +122,7 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
 
   useEffect(() => {
     calculatePrice();
-  }, [user?.location, formData.size]);
+  }, [user?.location, formData.size, formData.productType]);
 
   const handleNext = () => {
     const newErrors: { city?: string; address?: string } = {};
@@ -114,11 +147,51 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
   const sPrice = user?.location === "Armenia" ? "12 800 " : "6000";
   const mPrice = user?.location === "Armenia" ? "15 800" : "8000";
   const lPrice = user?.location === "Armenia" ? "18 800" : "10 000";
+
+  const sPriceBackPack = user?.location === "Armenia" ? "26 000 " : "10 000";
+  const mPriceBackPack = user?.location === "Armenia" ? "30 000" : "12 000";
+  const lPriceBackPack = user?.location === "Armenia" ? "34 000" : "14 000";
+
   const currencyKey =
     user?.location === "Armenia" ? "currency.amd" : "currency.rub";
   return (
     <div className="order-details">
       {/* <span>{formData.price}</span> */}
+      {/* ADD Type Product Start  */}
+      <span className="size-selection-taitel">
+        {t("orderDetails.productTypeLabel")}: *
+      </span>
+      <div className="product-type-selection">
+        <label
+          className={`product_radio ${
+            formData.productType === "toy" ? "active_radio" : ""
+          }`}
+        >
+          <span>{t("orderDetails.toyLabel")}</span>
+          <input
+            type="radio"
+            name="productType"
+            value="toy"
+            checked={formData.productType === "toy"}
+            onChange={onChange}
+          />
+        </label>
+        <label
+          className={`product_radio ${
+            formData.productType === "backpack" ? "active_radio" : ""
+          }`}
+        >
+          <span>{t("orderDetails.backpackLabel")}</span>
+          <input
+            type="radio"
+            name="productType"
+            value="backpack"
+            checked={formData.productType === "backpack"}
+            onChange={onChange}
+          />
+        </label>
+      </div>
+      {/* ADD Type Product End  */}
 
       <div className="order-row-conatiner-custom">
         <label>
@@ -169,7 +242,8 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
           />
           <span>30 {t("orderDetails.sm")}</span>
           <span>
-            {sPrice} {t(currencyKey)}
+            {formData.productType === "toy" ? sPrice : sPriceBackPack}{" "}
+            {t(currencyKey)}
           </span>
         </label>
         <label
@@ -187,7 +261,8 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
           />
           <span>40 {t("orderDetails.sm")}</span>
           <span>
-            {mPrice} {t(currencyKey)}
+            {formData.productType === "toy" ? mPrice : mPriceBackPack}{" "}
+            {t(currencyKey)}
           </span>
         </label>
         <label
@@ -205,7 +280,8 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
           />
           <span className={""}>50 {t("orderDetails.sm")}</span>
           <span>
-            {lPrice} {t(currencyKey)}
+            {formData.productType === "toy" ? lPrice : lPriceBackPack}{" "}
+            {t(currencyKey)}
           </span>
         </label>
       </div>

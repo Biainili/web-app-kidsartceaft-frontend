@@ -16,6 +16,7 @@ export const OrderPage: React.FC = () => {
     price: user?.location === "Russia" ? 8000 : 12800,
     promoCode: "",
     orderImg: null as File | null,
+    productType : "toy"
   });
 
   const handleChange = (
