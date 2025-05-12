@@ -163,7 +163,7 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
       </span>
       <div className="product-type-selection">
         <label
-          className={`product_radio ${
+          className={`product_radio  ${
             formData.productType === "toy" ? "active_radio" : ""
           }`}
         >

@@ -554,9 +554,9 @@ ol {
   width: 50px;
 }
 
-.social-links a:hover {
+/* .social-links a:hover {
   background-color: #0056b3;
-}
+} */
 
 .final-call {
   text-align: center;
@@ -595,6 +595,9 @@ footer {
   .profile-info p {
     font-size: 16px;
   }
+  .toggle_btn {
+    background: #fff;
+  }
 }
 
 @media (max-width: 750px) {
@@ -624,6 +627,11 @@ footer {
 }
 
 @media (max-width: 450px) {
+  .language_container {
+    left: 32px;
+    top: 80px;
+  }
+
   .final-call {
     font-size: 14px;
   }
@@ -682,7 +690,7 @@ footer {
   }
 
   header {
-    margin-bottom: 0px;
+    margin-bottom: 25px;
   }
 
   header nav button {

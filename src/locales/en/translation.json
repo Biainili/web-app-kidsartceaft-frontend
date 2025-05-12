@@ -123,7 +123,10 @@
     "commentPlaceholder": "If you have any comments",
     "addPhoto": "Add Photo for toy",
     "backButton": "Back",
-    "continueButton": "Continue"
+    "continueButton": "Continue",
+    "productTypeLabel": "Product type",
+    "toyLabel": "Toy",
+    "backpackLabel": "Backpack"
   },
   "currency": {
     "amd": "AMD",

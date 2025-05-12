@@ -118,7 +118,10 @@
     "commentPlaceholder": "Если у вас есть комментарии",
     "addPhoto": "Добавить фото для игрушки",
     "backButton": "Назад",
-    "continueButton": "Продолжить"
+    "continueButton": "Продолжить",
+    "productTypeLabel": "Тип товара",
+    "toyLabel": "Игрушка",
+    "backpackLabel": "Рюкзак"
   },
   "currency": {
     "amd": "Др.",

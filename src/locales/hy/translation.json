@@ -118,7 +118,10 @@
     "commentPlaceholder": "Եթե ունեք մեկնաբանություններ",
     "addPhoto": "Ավելացնել լուսանկար խաղալիքի համար",
     "backButton": "Հետ",
-    "continueButton": "Շարունակել"
+    "continueButton": "Շարունակել",
+    "productTypeLabel": "Ապրանքի տեսակ",
+    "toyLabel": "Խաղալիք",
+    "backpackLabel": "Ուսապարկ"
   },
   "currency": {
     "amd": "Դր․",
