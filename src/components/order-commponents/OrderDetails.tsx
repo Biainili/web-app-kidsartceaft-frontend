@@ -1,5 +1,6 @@
 import "../../styles/order.css";
 import fileUpload from "../../assets/img/file-upload.webp";
+import fileUpload1 from "../../assets/img/backpack_img.webp";
 import { useUser } from "../../context/UserContext";
 import { useEffect, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -154,6 +155,8 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
 
   const currencyKey =
     user?.location === "Armenia" ? "currency.amd" : "currency.rub";
+
+    const fileUploadResult = formData.productType === "toy" ? fileUpload : fileUpload1
   return (
     <div className="order-details">
       {/* <span>{formData.price}</span> */}
@@ -325,7 +328,7 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
               backgroundImage: `url(${
                 formData.orderImg
                   ? URL.createObjectURL(formData.orderImg)
-                  : fileUpload
+                  : fileUploadResult
               })`,
             }}
           >
