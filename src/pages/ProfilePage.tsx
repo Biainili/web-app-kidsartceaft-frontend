@@ -96,7 +96,7 @@ export const ProfilePage: React.FC = () => {
 
       alert(t("profilePage.updateSuccess"));
       setIsEditing(false);
-      fetchUserData(); // Update user data in context
+      fetchUserData(); 
     } catch (error: any) {
       alert(`${t("profilePage.updateError")} ${error.message}`);
     }

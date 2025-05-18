@@ -3,10 +3,11 @@ import { useUser } from "../context/UserContext";
 import { UserInfo } from "../components/order-commponents/UserInfo";
 import { OrderDetails } from "../components/order-commponents/OrderDetails";
 import { OrderConfirmation } from "../components/order-commponents/OrderConfirmation";
+import { useTranslation } from "react-i18next";
 import "../styles/order.css";
 
 export const OrderPage: React.FC = () => {
-  const { user } = useUser();
+  const { user, loading } = useUser();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     city: "",
@@ -16,8 +17,9 @@ export const OrderPage: React.FC = () => {
     price: user?.location === "Russia" ? 8000 : 12800,
     promoCode: "",
     orderImg: null as File | null,
-    productType : "toy"
+    productType: "toy",
   });
+  const { t } = useTranslation();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -36,69 +38,80 @@ export const OrderPage: React.FC = () => {
     const today = new Date();
 
     const orderDate = today
-        .toLocaleDateString("ru-RU", { day: "2-digit", month: "2-digit", year: "2-digit" })
-        .replace(/\//g, ".");
+      .toLocaleDateString("ru-RU", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "2-digit",
+      })
+      .replace(/\//g, ".");
 
     const estimatedDelivery = new Date();
     estimatedDelivery.setDate(today.getDate() + 10);
     const deliveryDate = estimatedDelivery
-        .toLocaleDateString("ru-RU", { day: "2-digit", month: "2-digit", year: "2-digit" })
-        .replace(/\//g, ".");
+      .toLocaleDateString("ru-RU", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "2-digit",
+      })
+      .replace(/\//g, ".");
 
     const orderData = {
-        userId: user?.id,
-        username: user?.username,
-        email: user?.email,
-        phone: user?.phone,
-        location: user?.location,
-        ...formData,
-        orderDate,
-        deliveryDate,
+      userId: user?.id,
+      username: user?.username,
+      email: user?.email,
+      phone: user?.phone,
+      location: user?.location,
+      ...formData,
+      orderDate,
+      deliveryDate,
     };
 
     console.log("Order Data:", orderData);
 
     try {
-        const formDataToSend = new FormData();
-        
-        // Добавляем все текстовые данные в `form-data`
-        for (const key in orderData) {
-            if (key !== "orderImg") { // исключаем `orderImg`, так как он файл
-                formDataToSend.append(key, String((orderData as any)[key]));
-            }
+      const formDataToSend = new FormData();
+
+      // Добавляем все текстовые данные в `form-data`
+      for (const key in orderData) {
+        if (key !== "orderImg") {
+          // исключаем `orderImg`, так как он файл
+          formDataToSend.append(key, String((orderData as any)[key]));
         }
+      }
 
-        // Добавляем файл в `form-data`
-        if (orderData.orderImg instanceof File) {
-            formDataToSend.append("orderImg", orderData.orderImg);
-        } else {
-            console.error("❌ Ошибка: orderImg не является файлом!", orderData.orderImg);
-        }
+      // Добавляем файл в `form-data`
+      if (orderData.orderImg instanceof File) {
+        formDataToSend.append("orderImg", orderData.orderImg);
+      } else {
+        console.error(
+          "❌ Ошибка: orderImg не является файлом!",
+          orderData.orderImg
+        );
+      }
 
-        // Выводим `formData` перед отправкой
-        console.log("📤 Отправляем в бэкенд:", formDataToSend);
+      // Выводим `formData` перед отправкой
+      console.log("📤 Отправляем в бэкенд:", formDataToSend);
 
-        // Отправляем запрос
-        const response = await fetch("http://localhost:5000/api/orders", {
-            method: "POST",
-            body: formDataToSend, // 👈 отправляем `form-data`
-        });
+      // Отправляем запрос
+      const response = await fetch("http://localhost:5000/api/orders", {
+        method: "POST",
+        body: formDataToSend, // 👈 отправляем `form-data`
+      });
 
-        const result = await response.json();
+      const result = await response.json();
 
-        if (response.ok) {
-            alert(`✅ Заказ подтвержден! ID заказа: ${result.orderID}`);
-            console.log("✅ Order Created:", result);
-        } else {
-            alert(`❌ Ошибка: ${result.message}`);
-            console.error("❌ Server Error:", result);
-        }
+      if (response.ok) {
+        alert(`✅ Заказ подтвержден! ID заказа: ${result.orderID}`);
+        console.log("✅ Order Created:", result);
+      } else {
+        alert(`❌ Ошибка: ${result.message}`);
+        console.error("❌ Server Error:", result);
+      }
     } catch (error) {
-        alert("❌ Ошибка при отправке заказа");
-        console.error("❌ Fetch Error:", error);
+      alert("❌ Ошибка при отправке заказа");
+      console.error("❌ Fetch Error:", error);
     }
-};
-
+  };
 
   // const handleConfirmOrder = async () => {
   //   const today = new Date();
@@ -164,6 +177,9 @@ export const OrderPage: React.FC = () => {
   //     console.error("❌ Fetch Error:", error);
   //   }
   // };
+
+  if (loading) return <div>{t("profilePage.loading")}</div>;
+  if (!user) return <div>{t("profilePage.userNotFound")}</div>;
 
   return (
     <div className="order-page">

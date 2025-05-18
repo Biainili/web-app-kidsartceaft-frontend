@@ -5,7 +5,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import Layout from "./components/Layout";
-import { AuthProvider } from "./context/AuthContext"; // Импортируем AuthProvider
+import { AuthProvider } from "./context/AuthContext"; 
 import { ModalProvider } from "./context/ModalContext";
 import { UserProvider } from "./context/UserContext";
 import "./App.css";
