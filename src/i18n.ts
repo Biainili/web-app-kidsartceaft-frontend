@@ -16,6 +16,10 @@ i18n
       hy: { translation: hy },
     },
     fallbackLng: "en",
+    detection: {
+      order: ["path", "navigator"],
+      lookupFromPathIndex: 0,
+    },
     interpolation: {
       escapeValue: false,
     },

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useUser } from "../context/UserContext";
 import OrderImg from "../assets/img/order-img.png";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { MyOrders } from "../components/order-commponents/MyOrders";
 import { useTranslation } from "react-i18next";
 
@@ -10,7 +10,7 @@ export const ProfilePage: React.FC = () => {
   const [isEditing, setIsEditing] = useState(false);
   const isFirstRender = useRef(true);
   const { t } = useTranslation();
-
+  const { lang = "en" } = useParams();
   const [formData, setFormData] = useState({
     username: user?.username || "",
     phone: user?.phone || "",
@@ -96,7 +96,7 @@ export const ProfilePage: React.FC = () => {
 
       alert(t("profilePage.updateSuccess"));
       setIsEditing(false);
-      fetchUserData(); 
+      fetchUserData();
     } catch (error: any) {
       alert(`${t("profilePage.updateError")} ${error.message}`);
     }
@@ -121,7 +121,7 @@ export const ProfilePage: React.FC = () => {
             </p>
 
             {/* Кнопка перехода на страницу заказа */}
-            <Link to="/order" className="order-button">
+            <Link to={`/${lang}/order`} className="order-button">
               {t("profilePage.orderButton")}
             </Link>
           </div>

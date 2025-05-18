@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useUser } from "../context/UserContext";
 import "../styles/login.css";
@@ -13,16 +13,15 @@ export const LoginPage: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showForgot, setShowForgot] = useState(false);
   const { t } = useTranslation();
-
-  // Если пользователь уже авторизован, перенаправляем его в профиль
+  const { lang = "en" } = useParams();
 
   const { user } = useUser();
 
   useEffect(() => {
     if (isAuthenticated && user) {
-      navigate("/profile");
+      navigate(`/${lang}/profile`, { replace: true });
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, user, navigate, lang]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -43,7 +42,7 @@ export const LoginPage: React.FC = () => {
       }
 
       const data = await response.json();
-      login(data.token, navigate); // Передаём `navigate`
+      await login(data.token);
     } catch (error) {
       console.error("Login error:", error);
       alert("Login error. Check your email and password.");
@@ -105,7 +104,9 @@ export const LoginPage: React.FC = () => {
 
         <button type="submit">{t("login")}</button>
         <div className="container_forgot_register">
-          <Link to={"/register"}>{t("loginPage.recover.newAccount")}</Link>
+          <Link to={`/${lang}/register`}>
+            {t("loginPage.recover.newAccount")}
+          </Link>
           <button id="forgot_pass" onClick={() => setShowForgot(true)}>
             {t("forgotPassword")}
           </button>

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useModal } from "../context/ModalContext";
 import { useUser } from "../context/UserContext";
@@ -13,13 +13,15 @@ const Header = () => {
   const { isLogoutModalOpen, setLogoutModalOpen } = useModal();
   const { user } = useUser();
   const { t } = useTranslation();
+  const { lang = "en" } = useParams();
   // const [currenUser, setCurrenUser] = useState(user);
 
   const navigate = useNavigate(); // Получаем `navigate`
 
-  const bigLogout = () => {
+  const bigLogout = async () => {
     setLogoutModalOpen(false);
-    logout(navigate);
+    await logout();
+    navigate(`/${lang}`);
   };
 
   // useEffect(() => {
@@ -29,13 +31,13 @@ const Header = () => {
   return (
     <>
       <header>
-        <Link to="/">
+        <Link to={`/${lang}`}>
           <img src={Logo} alt="Logo" width={80} className="logo_img" />
         </Link>
         <nav>
           {isAuthenticated && user ? (
             <>
-              <Link to="/profile">{user ? user.username : "Profile"}</Link>
+              <Link to={`/${lang}/profile`}>{user.username}</Link>
               <button
                 className="logout_btn"
                 onClick={() => setLogoutModalOpen(true)}
@@ -45,8 +47,8 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link to="/login">{t("login")}</Link>
-              <Link to="/register">{t("register")}</Link>
+              <Link to={`/${lang}/login`}>{t("login")}</Link>
+              <Link to={`/${lang}/register`}>{t("register")}</Link>
             </>
           )}
         </nav>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams  } from "react-router-dom";
 import "../styles/register.css";
 import { useTranslation } from "react-i18next";
 
@@ -31,6 +31,7 @@ export const RegisterPage: React.FC = () => {
 
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { lang = "en" } = useParams(); 
 
   // Обработчик изменения полей формы
   const handleChange = (
@@ -77,8 +78,8 @@ export const RegisterPage: React.FC = () => {
 
       const data = await response.json();
       console.log(data);
-      alert(t("registrationSuccess")); // Сообщаем пользователю
-      navigate("/login");
+      alert(t("registrationSuccess")); 
+      navigate(`/${lang}/login`);
     } catch (error) {
       console.error("Registration error:", error);
       alert(t("registrationError"));

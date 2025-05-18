@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useUser } from "../context/UserContext";
 import { useTranslation } from "react-i18next";
 import HeroImg from "../assets/img/Hero-KidsArtCraft.png";
@@ -12,6 +12,7 @@ import "../index.css";
 const HomePage: React.FC = () => {
   const { user, fetchUserData } = useUser();
   const { t } = useTranslation();
+  const { lang = "en" } = useParams();
 
   useEffect(() => {
     fetchUserData();
@@ -31,7 +32,7 @@ const HomePage: React.FC = () => {
         <p>{t("homeDescription")}</p>
 
         <div className="order-buttons">
-          <Link to={user ? "/order" : "/login"} className="btn">
+          <Link to={user ? `/${lang}/order` : `/${lang}/login`} className="btn">
             {t("homeOrderNow")}
           </Link>
         </div>
@@ -69,7 +70,9 @@ const HomePage: React.FC = () => {
         <div className="video-demo">
           <video controls>
             <source src={KidsVideo} type="video/mp4" />
-            {t("videoNotSupported", { defaultValue: "Your browser does not support the video tag." })}
+            {t("videoNotSupported", {
+              defaultValue: "Your browser does not support the video tag.",
+            })}
           </video>
         </div>
       </section>
