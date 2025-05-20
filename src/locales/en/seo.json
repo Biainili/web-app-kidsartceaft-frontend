@@ -1,0 +1,22 @@
+{
+  "home": {
+    "title": "Custom plush from kid's drawing | KidsArtCraft",
+    "desc":  "Turn art into soft toys. Ship worldwide."
+  },
+  "login": {
+    "title": "Log in | KidsArtCraft",
+    "desc":  "Sign in to track orders and manage your profile."
+  },
+  "register": {
+    "title": "Sign up | KidsArtCraft",
+    "desc":  "Create an account and turn drawings into plush toys."
+  },
+  "order": {
+    "title": "Place an order | KidsArtCraft",
+    "desc":  "Upload a drawing, choose product type, and order your custom plush toy."
+  },
+  "profile": {
+    "title": "My account | KidsArtCraft",
+    "desc":  "Track orders and edit data."
+  }
+}

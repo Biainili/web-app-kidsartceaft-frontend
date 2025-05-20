@@ -5,6 +5,9 @@ import { OrderDetails } from "../components/order-commponents/OrderDetails";
 import { OrderConfirmation } from "../components/order-commponents/OrderConfirmation";
 import { useTranslation } from "react-i18next";
 import "../styles/order.css";
+import { SEO } from "../components/SEO";
+import { getUrls } from "../utils/seo";
+import { useParams } from "react-router-dom";
 
 export const OrderPage: React.FC = () => {
   const { user, loading } = useUser();
@@ -20,6 +23,8 @@ export const OrderPage: React.FC = () => {
     productType: "toy",
   });
   const { t } = useTranslation();
+  const urls = getUrls("");
+  const { lang = "en" } = useParams();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -182,35 +187,47 @@ export const OrderPage: React.FC = () => {
   if (!user) return <div>{t("profilePage.userNotFound")}</div>;
 
   return (
-    <div className="order-page">
-      <div className="order-container">
-        {step === 1 && (
-          <UserInfo
-            username={user?.username || ""}
-            email={user?.email || ""}
-            phone={user?.phone || ""}
-            location={user?.location || ""}
-            onContinue={() => setStep(2)}
-          />
-        )}
-        {step === 2 && (
-          <OrderDetails
-            formData={formData}
-            setFormData={setFormData}
-            onChange={handleChange}
-            onNext={() => setStep(3)}
-            onBack={() => setStep(1)}
-          />
-        )}
-        {step === 3 && (
-          <OrderConfirmation
-            price={formData.price}
-            onConfirm={handleConfirmOrder}
-            onBack={() => setStep(2)}
-          />
-        )}
+    <>
+      <SEO
+        title={t("seo:order.title")}
+        description={t("seo:order.desc")}
+        canonical={urls[lang as "en" | "ru" | "hy"]}
+        alternates={[
+          { lang: "en", url: urls.en },
+          { lang: "ru", url: urls.ru },
+          { lang: "hy", url: urls.hy },
+        ]}
+      />
+      <div className="order-page">
+        <div className="order-container">
+          {step === 1 && (
+            <UserInfo
+              username={user?.username || ""}
+              email={user?.email || ""}
+              phone={user?.phone || ""}
+              location={user?.location || ""}
+              onContinue={() => setStep(2)}
+            />
+          )}
+          {step === 2 && (
+            <OrderDetails
+              formData={formData}
+              setFormData={setFormData}
+              onChange={handleChange}
+              onNext={() => setStep(3)}
+              onBack={() => setStep(1)}
+            />
+          )}
+          {step === 3 && (
+            <OrderConfirmation
+              price={formData.price}
+              onConfirm={handleConfirmOrder}
+              onBack={() => setStep(2)}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { HelmetProvider } from "react-helmet-async";
+import { Suspense } from "react";
 import "./index.css";
 import App from "./App";
 import "./i18n";
@@ -9,6 +11,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <HelmetProvider>
+      <Suspense fallback={<div>Loading…</div>}>
+        <App />
+      </Suspense>
+    </HelmetProvider>
   </React.StrictMode>
 );
