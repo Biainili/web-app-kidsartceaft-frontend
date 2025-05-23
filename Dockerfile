@@ -3,7 +3,7 @@ FROM node:16 as build
 WORKDIR /app
 COPY . .
 RUN npm install
-RUN npm run build
+RUN npm install --legacy-peer-deps
 
 # Этап запуска
 FROM nginx:alpine
