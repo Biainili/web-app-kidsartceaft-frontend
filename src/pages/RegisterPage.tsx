@@ -63,20 +63,17 @@ export const RegisterPage: React.FC = () => {
     }
 
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/auth/register`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            username: formData.username,
-            email: formData.email,
-            phone: formData.phone,
-            location: formData.location,
-            password: formData.password,
-          }), // Отправляем данные формы
-        }
-      );
+      const response = await fetch("http://89.169.152.88/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: formData.username,
+          email: formData.email,
+          phone: formData.phone,
+          location: formData.location,
+          password: formData.password,
+        }), // Отправляем данные формы
+      });
 
       if (!response.ok) {
         throw new Error("Registration error");
