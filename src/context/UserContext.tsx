@@ -40,13 +40,16 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         throw new Error("No token found");
       }
 
-      const response = await fetch("REACT_APP_API_URL/auth/profile", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`, // ✅ Добавляем "Bearer"
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/auth/profile`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`, // ✅ Добавляем "Bearer"
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to fetch user data");
