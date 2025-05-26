@@ -40,7 +40,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         throw new Error("No token found");
       }
 
-      const response = await fetch("http://localhost:5000/api/auth/profile", {
+      const response = await fetch("REACT_APP_API_URL/auth/profile", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`, // ✅ Добавляем "Bearer"

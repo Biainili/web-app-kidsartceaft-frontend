@@ -34,7 +34,7 @@ export const MyOrders: React.FC<{ userId: string | null }> = ({ userId }) => {
       }
 
       try {
-        const response = await fetch("http://localhost:5000/api/orders", {
+        const response = await fetch("REACT_APP_API_URL/orders", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,

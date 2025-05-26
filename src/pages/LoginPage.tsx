@@ -34,7 +34,7 @@ export const LoginPage: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
+      const response = await fetch("REACT_APP_API_URL/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -57,7 +57,7 @@ export const LoginPage: React.FC = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/recover-password",
+        "REACT_APP_API_URL/auth/recover-password",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

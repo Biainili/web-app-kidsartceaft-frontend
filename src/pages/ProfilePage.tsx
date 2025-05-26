@@ -74,7 +74,7 @@ export const ProfilePage: React.FC = () => {
 
       // Send a request to the server
       const response = await fetch(
-        "http://localhost:5000/api/auth/update-profile",
+        "REACT_APP_API_URL/auth/update-profile",
         {
           method: "PUT",
           headers: {
