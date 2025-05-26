@@ -63,7 +63,7 @@ export const RegisterPage: React.FC = () => {
     }
 
     try {
-      const response = await fetch("/api/auth/register", {
+      const response = await fetch("http://backend:5000/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
