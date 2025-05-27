@@ -34,22 +34,19 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchUserData = async () => {
     try {
-      const token = localStorage.getItem("token"); // Получаем токен из localStorage
+      const token = localStorage.getItem("token"); 
 
       if (!token) {
         throw new Error("No token found");
       }
 
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/auth/profile`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`, // ✅ Добавляем "Bearer"
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch("/api/auth/profile", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`, 
+          "Content-Type": "application/json",
+        },
+      });
 
       if (!response.ok) {
         throw new Error("Failed to fetch user data");

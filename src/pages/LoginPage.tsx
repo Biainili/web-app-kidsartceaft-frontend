@@ -34,14 +34,11 @@ export const LoginPage: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/auth/login`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
       if (!response.ok) {
         throw new Error("Authorization error");
@@ -59,14 +56,11 @@ export const LoginPage: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/auth/recover-password`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: recoverEmail }),
-        }
-      );
+      const response = await fetch("/api/auth/recover-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: recoverEmail }),
+      });
 
       if (!response.ok) {
         throw new Error("Failed to send recovery email");

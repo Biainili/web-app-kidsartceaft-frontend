@@ -16,12 +16,11 @@ export const MyOrders: React.FC<{ userId: string | null }> = ({ userId }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const { t } = useTranslation();
-  
 
   useEffect(() => {
     const fetchOrders = async () => {
       if (!isAuthenticated) {
-        setError(t("myOrders.notAuthorized")); 
+        setError(t("myOrders.notAuthorized"));
         setLoading(false);
         return;
       }
@@ -34,7 +33,7 @@ export const MyOrders: React.FC<{ userId: string | null }> = ({ userId }) => {
       }
 
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/orders`, {
+        const response = await fetch("/api/auth/orders", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -71,13 +70,16 @@ export const MyOrders: React.FC<{ userId: string | null }> = ({ userId }) => {
           {orders.map((order) => (
             <li key={order.order_id} className="order-item">
               <p>
-                🆔 <strong>{t("myOrders.idLabel")}:</strong> <span>{order.order_id}</span> 
+                🆔 <strong>{t("myOrders.idLabel")}:</strong>{" "}
+                <span>{order.order_id}</span>
               </p>
               <p>
-                📅 <strong>{t("myOrders.orderDateLabel")}:</strong> {order.order_date}
+                📅 <strong>{t("myOrders.orderDateLabel")}:</strong>{" "}
+                {order.order_date}
               </p>
               <p>
-                🚚 <strong>{t("myOrders.deliveryDateLabel")}:</strong> {order.delivery_date}
+                🚚 <strong>{t("myOrders.deliveryDateLabel")}:</strong>{" "}
+                {order.delivery_date}
               </p>
               <p>
                 ✅ <strong>{t("myOrders.statusLabel")}:</strong> {order.status}

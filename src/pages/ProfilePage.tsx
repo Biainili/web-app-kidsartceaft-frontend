@@ -73,23 +73,20 @@ export const ProfilePage: React.FC = () => {
       }
 
       // Send a request to the server
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/auth/update-profile`,
-        {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${token}`, // ✅ Добавляем "Bearer"
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: formData.username,
-            phone: formData.phone,
-            location: formData.location,
-            currentPassword: formData.currentPassword,
-            newPassword: formData.newPassword,
-          }),
-        }
-      );
+      const response = await fetch("/api/auth/update-profile", {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`, 
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: formData.username,
+          phone: formData.phone,
+          location: formData.location,
+          currentPassword: formData.currentPassword,
+          newPassword: formData.newPassword,
+        }),
+      });
 
       const data = await response.json();
 
