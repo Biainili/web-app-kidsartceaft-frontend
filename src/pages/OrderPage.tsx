@@ -98,7 +98,7 @@ export const OrderPage: React.FC = () => {
       console.log("📤 Отправляем в бэкенд:", formDataToSend);
 
       // Отправляем запрос
-      const response = await fetch("/api/auth/orders", {
+      const response = await fetch("/api/orders", {
         method: "POST",
         body: formDataToSend, // 👈 отправляем `form-data`
       });

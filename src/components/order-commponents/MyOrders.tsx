@@ -33,7 +33,7 @@ export const MyOrders: React.FC<{ userId: string | null }> = ({ userId }) => {
       }
 
       try {
-        const response = await fetch("/api/auth/orders", {
+        const response = await fetch("/api/orders", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,

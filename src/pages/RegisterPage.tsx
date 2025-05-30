@@ -72,7 +72,7 @@ export const RegisterPage: React.FC = () => {
           phone: formData.phone,
           location: formData.location,
           password: formData.password,
-        }), // Отправляем данные формы
+        }),
       });
 
       if (!response.ok) {

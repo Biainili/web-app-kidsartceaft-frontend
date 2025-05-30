@@ -29,9 +29,9 @@ export const ProfilePage: React.FC = () => {
     confirmPassword: false,
   });
 
-  useEffect(() => {
-    fetchUserData();
-  }, [fetchUserData]);
+  // useEffect(() => {
+  //   fetchUserData();
+  // }, [fetchUserData]);
 
   useEffect(() => {
     if (user && !isEditing && isFirstRender.current) {
