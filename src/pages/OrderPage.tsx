@@ -42,24 +42,13 @@ export const OrderPage: React.FC = () => {
   const handleConfirmOrder = async () => {
     const today = new Date();
 
-    const orderDate = today
-      .toLocaleDateString("ru-RU", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "2-digit",
-      })
-      .replace(/\//g, ".");
+    const orderDate = today.toISOString().slice(0, 10);
 
     const estimatedDelivery = new Date();
     estimatedDelivery.setDate(today.getDate() + 10);
-    const deliveryDate = estimatedDelivery
-      .toLocaleDateString("ru-RU", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "2-digit",
-      })
-      .replace(/\//g, ".");
+    const deliveryDate = estimatedDelivery.toISOString().slice(0, 10);
 
+    
     const orderData = {
       userId: user?.id,
       username: user?.username,
