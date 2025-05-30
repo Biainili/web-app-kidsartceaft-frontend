@@ -17,9 +17,9 @@ const HomePage: React.FC = () => {
   const { lang = "en" } = useParams();
   const urls = getUrls("");
 
-  useEffect(() => {
-    fetchUserData();
-  }, [fetchUserData]);
+  // useEffect(() => {
+  //   fetchUserData();
+  // }, [fetchUserData]);
 
   return (
     <>
