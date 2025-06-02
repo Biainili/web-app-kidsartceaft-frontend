@@ -92,24 +92,32 @@ input:disabled,
 }
 
 .size-selection {
-  width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding-inline: 0px;
-  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 .product_radio {
   position: relative;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  max-width: 100px;
-  box-shadow: 1px 1px 2px 3px rgb(26, 115, 232, 0.2);
-  color: rgb(0, 0, 0, 0.5);
-  border-radius: 5px;
-  align-self: center;
+  flex: 1 1 calc(33.33% - 20px); /* до 3 в ряд */
+  max-width: 120px;
+  min-width: 90px;
+  box-sizing: border-box;
   padding: 5px;
+  align-self: stretch;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px 3px rgba(26, 115, 232, 0.2);
+  color: rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
 }
+
 .size-selection input[type="radio"] {
   display: none;
 }
@@ -244,16 +252,16 @@ input[type="radio"] {
 }
 
 .product_radio {
-  --brand: #0a6cf1; 
+  --brand: #0a6cf1;
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font: 600 1rem/1.2 "Inter", system-ui, sans-serif;
-  color: #334155; 
+  color: #334155;
   background: #fff;
-  border: 2px solid #d0d5df; 
-  border-radius: 10px; 
+  border: 2px solid #d0d5df;
+  border-radius: 10px;
   cursor: pointer;
   user-select: none;
   padding: 5px;
@@ -267,7 +275,7 @@ input[type="radio"] {
 .product_radio input {
   width: 100%;
   position: absolute;
-  inset: 0; 
+  inset: 0;
   opacity: 0;
   cursor: pointer;
 }
@@ -324,7 +332,7 @@ input[type="radio"] {
     font-size: 14px;
   }
 
-  .product_radio{
+  .product_radio {
     padding: 5px;
   }
   .active_radio {
