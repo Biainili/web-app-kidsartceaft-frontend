@@ -57,6 +57,15 @@ export const MyOrders: React.FC<{ userId: string | null }> = ({ userId }) => {
     fetchOrders();
   }, [isAuthenticated]);
 
+  const formatDate = (isoDate: string) => {
+    if (!isoDate) return "";
+    const date = new Date(isoDate);
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}.${month}.${year}`;
+  };
+
   if (loading) return <p>⏳ {t("myOrders.loading")}</p>;
   if (error) return <p className="error">❌ {error}</p>;
 
@@ -75,11 +84,11 @@ export const MyOrders: React.FC<{ userId: string | null }> = ({ userId }) => {
               </p>
               <p>
                 📅 <strong>{t("myOrders.orderDateLabel")}:</strong>{" "}
-                {order.order_date}
+                {formatDate(order.order_date)}
               </p>
               <p>
                 🚚 <strong>{t("myOrders.deliveryDateLabel")}:</strong>{" "}
-                {order.delivery_date}
+                {formatDate(order.delivery_date)}
               </p>
               <p>
                 ✅ <strong>{t("myOrders.statusLabel")}:</strong> {order.status}
