@@ -150,7 +150,7 @@ input:disabled,
 
 .upload-label {
   cursor: pointer;
-  align-items: anchor-center;
+  align-items: center;
 }
 
 .upload-container input {
@@ -199,6 +199,7 @@ input:disabled,
   font-size: 14px;
   font-weight: normal;
   margin-top: unset;
+  justify-content: center;
 }
 
 input[type="radio"] {
@@ -325,11 +326,11 @@ input[type="radio"] {
 
 @media (max-width: 400px) {
   .user-info p {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .buttons-container button {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .product_radio {
