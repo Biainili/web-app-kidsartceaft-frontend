@@ -121,7 +121,8 @@
     "continueButton": "Շարունակել",
     "productTypeLabel": "Ապրանքի տեսակ",
     "toyLabel": "Խաղալիք",
-    "backpackLabel": "Ուսապարկ"
+    "backpackLabel": "Ուսապարկ",
+    "errorOrderImgRequired": "Խնդրում ենք yükել պատկերը պատվեր համար:"
   },
   "currency": {
     "amd": "Դր․",

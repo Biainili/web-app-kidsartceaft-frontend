@@ -126,7 +126,8 @@
     "continueButton": "Continue",
     "productTypeLabel": "Product type",
     "toyLabel": "Toy",
-    "backpackLabel": "Backpack"
+    "backpackLabel": "Backpack",
+    "errorOrderImgRequired": "Please upload an image for the order."
   },
   "currency": {
     "amd": "AMD",

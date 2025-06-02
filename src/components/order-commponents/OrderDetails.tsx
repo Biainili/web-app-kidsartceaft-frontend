@@ -34,7 +34,11 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
   onBack,
 }) => {
   const { user } = useUser();
-  const [errors, setErrors] = useState<{ city?: string; address?: string }>({});
+  const [errors, setErrors] = useState<{
+    city?: string;
+    address?: string;
+    orderImg?: string;
+  }>({});
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -126,13 +130,16 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
   }, [user?.location, formData.size, formData.productType]);
 
   const handleNext = () => {
-    const newErrors: { city?: string; address?: string } = {};
+    const newErrors: { city?: string; address?: string; orderImg?: string } = {};
 
     if (!formData.city.trim()) {
       newErrors.city = t("orderDetails.errorCityRequired");
     }
     if (!formData.address.trim()) {
       newErrors.address = t("orderDetails.errorAddressRequired");
+    }
+    if (!formData.orderImg) {
+      newErrors.orderImg = t("orderDetails.errorOrderImgRequired");
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -156,7 +163,8 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
   const currencyKey =
     user?.location === "Armenia" ? "currency.amd" : "currency.rub";
 
-    const fileUploadResult = formData.productType === "toy" ? fileUpload : fileUpload1
+  const fileUploadResult =
+    formData.productType === "toy" ? fileUpload : fileUpload1;
   return (
     <div className="order-details">
       {/* <span>{formData.price}</span> */}
@@ -335,6 +343,7 @@ export const OrderDetails: React.FC<OrderDetailsProps> = ({
             {!formData.orderImg && "+"}
           </div>
         </label>
+        {errors.orderImg && <span className="error-message">{errors.orderImg}</span>}
       </div>
 
       <div className="buttons-container">

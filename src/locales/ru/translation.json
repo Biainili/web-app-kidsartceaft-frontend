@@ -121,7 +121,8 @@
     "continueButton": "Продолжить",
     "productTypeLabel": "Тип товара",
     "toyLabel": "Игрушка",
-    "backpackLabel": "Рюкзак"
+    "backpackLabel": "Рюкзак",
+    "errorOrderImgRequired": "Пожалуйста, загрузите изображение для заказа."
   },
   "currency": {
     "amd": "Др.",
