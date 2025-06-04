@@ -1,5 +1,4 @@
 name: Deploy Frontend
-
 on:
   push:
     branches: [master]
@@ -7,10 +6,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v0.1.6
@@ -19,11 +16,10 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd ~/web-app-kidsartceaft-frontend   
-            git pull origin master               
+            cd ~/web-app-kidsartceaft-frontend
+            git pull origin master
 
-
+            
             cd ~/kids-art-craft-docker-compose
-            docker-compose down 
-            docker-compose build frontend
-            docker-compose up -d frontend
+            docker-compose -p ubuntu build frontend
+            docker-compose -p ubuntu up -d --no-deps frontend
