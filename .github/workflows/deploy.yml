@@ -19,8 +19,8 @@ jobs:
             cd ~/web-app-kidsartceaft-frontend
             git pull origin master
 
-            
+
             cd ~/kids-art-craft-docker-compose
-            docker-compose -p ubuntu build frontend
+            docker-compose -p ubuntu build --no-cache frontend
             docker-compose -p ubuntu up -d --no-deps frontend
           timeout: 900s
