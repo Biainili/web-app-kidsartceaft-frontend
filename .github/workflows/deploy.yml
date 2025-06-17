@@ -23,3 +23,4 @@ jobs:
             cd ~/kids-art-craft-docker-compose
             docker-compose -p ubuntu build frontend
             docker-compose -p ubuntu up -d --no-deps frontend
+          timeout: 900 
