@@ -6,6 +6,7 @@ import "../styles/login.css";
 import { useTranslation } from "react-i18next";
 import { SEO } from "../components/SEO";
 import { getUrls } from "../utils/seo";
+import { Loader } from "../components/Loader";
 
 export const LoginPage: React.FC = () => {
   const { login, isAuthenticated } = useAuth();
@@ -17,8 +18,8 @@ export const LoginPage: React.FC = () => {
   const { t } = useTranslation();
   const { lang = "en" } = useParams();
   const urls = getUrls("");
-
   const { user } = useUser();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (isAuthenticated && user) {
@@ -32,6 +33,7 @@ export const LoginPage: React.FC = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const response = await fetch("/api/auth/login", {
@@ -70,11 +72,14 @@ export const LoginPage: React.FC = () => {
     } catch (error) {
       alert("Error while recovering password");
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
+      {loading && <Loader />}
       <SEO
         title={t("seo:login.title")}
         description={t("seo:login.desc")}

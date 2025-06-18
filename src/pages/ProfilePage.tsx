@@ -194,6 +194,7 @@ export const ProfilePage: React.FC = () => {
                     name="location"
                     value={formData.location}
                     onChange={handleChange}
+                    readOnly       
                   />
                 </label>
 
