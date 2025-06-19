@@ -4,6 +4,7 @@ import "../styles/register.css";
 import { useTranslation } from "react-i18next";
 import { SEO } from "../components/SEO";
 import { getUrls } from "../utils/seo";
+import { Loader } from "../components/Loader";
 
 // Интерфейс для данных формы
 interface RegisterFormData {
@@ -35,6 +36,7 @@ export const RegisterPage: React.FC = () => {
   const { t } = useTranslation();
   const { lang = "en" } = useParams();
   const urls = getUrls("");
+  const [loading, setLoading] = useState(false);
 
   // Обработчик изменения полей формы
   const handleChange = (
@@ -55,7 +57,7 @@ export const RegisterPage: React.FC = () => {
   // Обработчик отправки формы
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    setLoading(true);
     // Проверяем совпадение паролей
     if (formData.password !== formData.confirmPassword) {
       alert(t("passwordMismatch"));
@@ -86,11 +88,14 @@ export const RegisterPage: React.FC = () => {
     } catch (error) {
       console.error("Registration error:", error);
       alert(t("registrationError"));
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
+      {loading && <Loader />}
       <SEO
         title={t("seo:register.title")}
         description={t("seo:register.desc")}
